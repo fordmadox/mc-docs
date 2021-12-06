@@ -1,0 +1,6 @@
+{
+  "total": 1,
+  "records": [
+    { "recid": 1, "type": "BIB", "field": "001", "subfield": "", "mc": "OrbisBibId", "dcs-group": "Identifiers", "dcs-label": "Orbis Identifier", "dcs": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_dcs.png\"/>", "findit": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_findit.png\"/>" }
+  ]
+}

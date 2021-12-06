@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DCS Documentation Demo - w2ui version</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    <!-- still need to add local styling, etc. -->
+</head>
+<body>
+
+<div style="padding: 18px 0 30px 10px; font-size: 22px;">DCS Documentation Demo</div>
+
+<div id="main" style="width: 100%; height: 700px;"></div>
+
+<script type="text/javascript">
+// widget configuration
+var config = {
+    layout: {
+        name: 'layout',
+        padding: 0,
+        panels: [
+            { type: 'left', size: 200, resizable: true, minSize: 120 },
+            { type: 'main', minSize: 550, overflow: 'hidden' }
+        ]
+    },
+    sidebar: {
+        name: 'sidebar',
+        nodes: [
+            { id: 'general', text: 'Cataloging System', group: true, expanded: true, nodes: [
+              { id: 'grid1', text: 'Voyager / ILS', icon: 'fa fa-pencil-square-o', selected: true },
+              { id: 'grid2', text: 'ArchivesSpace', icon: 'fa fa-pencil-square-o' },
+              { id: 'grid3', text: 'Ladybird', icon: 'fa fa-pencil-square-o' },
+              { id: 'grid4', text: 'Goobi', icon: 'fa fa-list-alt' }
+            ]},
+            { id: 'outward', text: 'Downstream', group: true, expanded: true, nodes: [
+              { id: 'grid5', text: 'IIIF', icon: 'fa fa-pencil-square-o'},
+              { id: 'grid6', text: 'Schema.org', icon: 'fa fa-pencil-square-o' },
+              { id: 'grid7', text: 'Open Graph', icon: 'fa fa-pencil-square-o' },
+              { id: 'html', text: 'MODS', icon: 'fa fa-pencil-square-o' }
+            ]}
+        ],
+        onClick: function (event) {
+            switch (event.target) {
+                case 'grid1':
+                    w2ui.layout.html('main', w2ui.grid1);
+                    break;
+                case 'grid2':
+                    w2ui.layout.html('main', w2ui.grid2);
+                    break;
+                case 'grid3':
+                    w2ui.layout.html('main', w2ui.grid3);
+                    break;
+                case 'grid4':
+                    w2ui.layout.html('main', w2ui.grid4);
+                    break;
+                case 'grid5':
+                    w2ui.layout.html('main', w2ui.grid5);
+                    break;
+                case 'grid6':
+                    w2ui.layout.html('main', w2ui.grid6);
+                    break;
+                case 'grid7':
+                    w2ui.layout.html('main', w2ui.grid7);
+                    break;
+                case 'html':
+                    w2ui.layout.html('main', '<div style="padding: 10px">More space for examples and such</div>');
+                    $(w2ui.layout.el('main'))
+                        .removeClass('w2ui-grid')
+                        .css({
+                            'border-left': '1px solid #efefef'
+                        });
+                    break;
+            }
+        }
+    },
+    grid1: {
+        name: 'grid1',
+        url: 'data/voyager-test.json',
+        method: 'GET',
+        show: {footer: true, toolbar: true},
+        columns: [
+            { field: 'type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
+            { field: 'field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
+            { field: 'subfield', text: 'Subfields', size: '180px', resizable: true },
+            { field: 'mc', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+            { field: 'dcs-group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
+            { field: 'dcs-label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+            { field: 'dcs', text: 'DCS Display', size: '200px', sortable: false, resizable: true},
+            { field: 'findit', text: 'FindIt Display', size: '200px', sortable: false, resizable: true},
+            { field: 'notes', text: 'Notes', size: '100px', sortable: false, resizable: true}
+        ]
+    },
+    grid2: {
+        name: 'grid2',
+        show: {footer: true, toolbar: true},
+        columns: [
+          { field: 'type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
+          { field: 'field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
+          { field: 'inherited', text: 'Inherited', size: '70px', sortable: true, resizable: true },
+          { field: 'mc', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+          { field: 'dcs-group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
+          { field: 'dcs-label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+          { field: 'dcs', text: 'DCS Display', size: '200px', sortable: false, resizable: true},
+          { field: 'notes', text: 'Notes', size: '100px', sortable: false, resizable: true}
+        ],
+        records: [
+          { recid: 1, type: 'ArchivalObject', field: 'Title', inherited: 'Y', mc: 'Title', 'dcs-group': 'Description', 'dcs-label': 'Title' },
+          { recid: 2, type: 'ArchivalObject', field: 'Date', inherited: 'Y', mc: 'Date', 'dcs-group': 'Description', 'dcs-label': 'Date' }
+        ]
+    },
+    grid3: {
+        name: 'grid3',
+        show: {footer: true, toolbar: true},
+        columns: [
+
+        ],
+        records: [
+
+        ]
+
+    },
+    grid4: {
+        name: 'grid4',
+        show: {footer: true, toolbar: true},
+        columns: [
+            { field: 'state', text: 'Hey', size: '80px' },
+            { field: 'title', text: 'Hey hey hey', size: '100%' },
+            { field: 'priority', text: 'Priority', size: '80px', attr: 'align="center"' }
+        ],
+        records: [
+            { recid: 1, state: 'Open', title: 'Short title for the record', priority: 2 },
+            { recid: 2, state: 'Open', title: 'Short title for the record', priority: 3 },
+            { recid: 3, state: 'Closed', title: 'Short title for the record', priority: 1 }
+        ]
+    }
+};
+
+$(function () {
+    // initialization
+    $('#main').w2layout(config.layout);
+    w2ui.layout.html('left', $().w2sidebar(config.sidebar));
+    w2ui.layout.html('main', $().w2grid(config.grid1));
+    // in memory initialization
+    $().w2grid(config.grid2);
+    $().w2grid(config.grid3);
+    $().w2grid(config.grid4);
+    $().w2grid(config.grid5);
+    $().w2grid(config.grid6);
+    $().w2grid(config.grid7);
+});
+</script>
+
+</body>
+</html>
