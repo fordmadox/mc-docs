@@ -1,323 +1,2344 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DCS Documentation Demo - w2ui version</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="vendor/w2ui-1.5.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="vendor/w2ui-1.5.min.css" />
-    <!-- still need to add local styling, etc. -->
-</head>
-<body>
-
-<div style="padding: 18px 0 30px 10px; font-size: 22px;">DCS Documentation Demo</div>
-
-<div id="main" style="width: 100%; height: 700px;"></div>
-
-<script type="text/javascript">
-// widget configuration
-var config = {
-    layout: {
-        name: 'layout',
-        padding: 0,
-        panels: [
-            { type: 'left', size: 200, resizable: true, minSize: 120 },
-            { type: 'main', minSize: 550, overflow: 'hidden' }
-        ]
-    },
-    sidebar: {
-        name: 'sidebar',
-        nodes: [
-            { id: 'general', text: 'Cataloging System', group: true, expanded: true, nodes: [
-              { id: 'grid1', text: 'Voyager / ILS', icon: 'fa fa-pencil-square-o', selected: true },
-              { id: 'grid2', text: 'ArchivesSpace', icon: 'fa fa-pencil-square-o' },
-              { id: 'grid3', text: 'Ladybird', icon: 'fa fa-pencil-square-o' },
-              { id: 'grid4', text: 'Goobi', icon: 'fa fa-list-alt' }
-            ]},
-            { id: 'outward', text: 'Downstream', group: true, expanded: true, nodes: [
-              { id: 'grid5', text: 'IIIF', icon: 'fa fa-pencil-square-o'},
-              { id: 'grid6', text: 'Schema.org', icon: 'fa fa-pencil-square-o' },
-              { id: 'grid7', text: 'Open Graph', icon: 'fa fa-pencil-square-o' },
-              { id: 'html', text: 'MODS', icon: 'fa fa-pencil-square-o' }
-            ]}
-        ],
-        onClick: function (event) {
-            switch (event.target) {
-                case 'grid1':
-                    w2ui.layout.html('main', w2ui.grid1);
-                    break;
-                case 'grid2':
-                    w2ui.layout.html('main', w2ui.grid2);
-                    break;
-                case 'grid3':
-                    w2ui.layout.html('main', w2ui.grid3);
-                    break;
-                case 'grid4':
-                    w2ui.layout.html('main', w2ui.grid4);
-                    break;
-                case 'grid5':
-                    w2ui.layout.html('main', w2ui.grid5);
-                    break;
-                case 'grid6':
-                    w2ui.layout.html('main', w2ui.grid6);
-                    break;
-                case 'grid7':
-                    w2ui.layout.html('main', w2ui.grid7);
-                    break;
-                case 'html':
-                    w2ui.layout.html('main', '<div style="padding: 10px">More space for examples and such</div>');
-                    $(w2ui.layout.el('main'))
-                        .removeClass('w2ui-grid')
-                        .css({
-                            'border-left': '1px solid #efefef'
-                        });
-                    break;
+<!DOCTYPE HTML>
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>DCS Documentation Demo - w2ui version</title><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script type="text/javascript" src="vendor/w2ui-1.5.min.js"></script><link rel="stylesheet" type="text/css" href="vendor/w2ui-1.5.min.css"></head><body><div style="padding: 18px 0 30px 10px; font-size: 22px;">DCS Documentation Demo</div><div id="main" style="width: 100%; height: 700px;"></div><script type="text/javascript">
+        // widget configuration
+        var config = {
+            layout: {
+                name: 'layout', padding: 0,
+                panels:[ {
+                    type: 'left', size: 200, resizable: true, minSize: 120
+                }, {
+                    type: 'main', minSize: 550, overflow: 'hidden'
+                }]
+            },
+            sidebar: {
+                name: 'sidebar',
+                nodes:[ {
+                    id: 'general', text: 'Cataloging System', group: true, expanded: true, nodes:[ {
+                        id: 'grid1', text: 'Voyager / ILS', icon: 'fa fa-pencil-square-o', selected: true
+                    }, {
+                        id: 'grid2', text: 'ArchivesSpace', icon: 'fa fa-pencil-square-o'
+                    }, {
+                        id: 'grid3', text: 'Ladybird', icon: 'fa fa-pencil-square-o'
+                    }, {
+                        id: 'grid4', text: 'Management App', icon: 'fa fa-list-alt'
+                    }, ]
+                }, {
+                    id: 'outward', text: 'Downstream', group: true, expanded: true, nodes:[ {
+                        id: 'grid5', text: 'DCS', icon: 'fa fa-pencil-square-o'
+                    }, {
+                        id: 'grid6', text: 'Metadata Cloud', icon: 'fa fa-pencil-square-o'
+                    }, {
+                        id: 'grid7', text: 'Schema.Org', icon: 'fa fa-pencil-square-o'
+                    }, {
+                        id: 'grid8', text: 'Open Graph', icon: 'fa fa-pencil-square-o'
+                     }
+                   ]
+                }],
+                onClick: function (event) {
+                    switch (event.target) {
+                        case 'grid1':
+                        w2ui.layout.html('main', w2ui.grid1);
+                        break;
+                        case 'grid2':
+                        w2ui.layout.html('main', w2ui.grid2);
+                        break;
+                        case 'grid3':
+                        w2ui.layout.html('main', w2ui.grid3);
+                        break;
+                        case 'grid4':
+                        w2ui.layout.html('main', w2ui.grid4);
+                        break;
+                        case 'grid5':
+                        w2ui.layout.html('main', w2ui.grid5);
+                        break;
+                        case 'grid6':
+                        w2ui.layout.html('main', w2ui.grid6);
+                        break;
+                        case 'grid7':
+                        w2ui.layout.html('main', w2ui.grid7);
+                        break;
+                        case 'grid8':
+                        w2ui.layout.html('main', w2ui.grid8);
+                $(w2ui.layout.el('main')).removeClass('w2ui-grid').css({'border-left': '1px solid #efefef'});
+            break;
             }
         }
-    },
-    grid1: {
-        name: 'grid1',
-        show: {footer: true, toolbar: true},
-        columns: [
-            { field: 'type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
-            { field: 'field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'subfield', text: 'Subfields', size: '180px', resizable: true },
-            { field: 'mc', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'dcs-group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
-            { field: 'dcs-label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'dcs', text: 'DCS Display', size: '200px', sortable: false, resizable: true},
-            { field: 'findit', text: 'FindIt Display', size: '200px', sortable: false, resizable: true},
-            { field: 'notes', text: 'Notes', size: '100px', sortable: false, resizable: true}
-        ],
-        "records": [
-          { "recid": 1, "type": "BIB", "field": "001", "subfield": "", "mc": "OrbisBibId", "dcs-group": "Identifiers", "dcs-label": "Orbis Identifier", "dcs": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_dcs.png\"/>", "findit": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_findit.png\"/>" },
-          { "recid": 2, "type": "BIB", "field": "008[18:21]", "subfield": "", "mc": "IllustrativeMatter", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 3, "type": "BIB", "field": "008[35:37]", "subfield": "", "mc": "LanguageCode", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 4, "type": "BIB", "field": "008[35:37]", "subfield": "", "mc": "Language", "dcs-group": "Description", "dcs-label": "Language", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 5, "type": "BIB", "field": "034", "subfield": "d, e, f, g", "mc": "Coordinate", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 6, "type": "BIB", "field": "034", "subfield": "d", "mc": "CoordinateWest", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 7, "type": "BIB", "field": "034", "subfield": "e", "mc": "CoordinateEast", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 8, "type": "BIB", "field": "034", "subfield": "f", "mc": "CoordinateNorth", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 9, "type": "BIB", "field": "034", "subfield": "g", "mc": "CoordinateSouth", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 10, "type": "BIB", "field": "041", "subfield": "a", "mc": "LanguageCode", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 11, "type": "BIB", "field": "041", "subfield": "a", "mc": "Language", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 12, "type": "BIB", "field": "043", "subfield": "a", "mc": "SubjectGeographicCode", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 13, "type": "BIB", "field": "050", "subfield": "a, b", "mc": "LibraryOfCongressClassificationNumber", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 14, "type": "BIB", "field": "100", "subfield": "", "mc": "Creator", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 15, "type": "BIB", "field": "110", "subfield": "", "mc": "Creator", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 16, "type": "BIB", "field": "110", "subfield": "a, b, c, e, u", "mc": "CreatorDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 17, "type": "BIB", "field": "111", "subfield": "", "mc": "Creator", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 18, "type": "BIB", "field": "111", "subfield": "a, c, e, j, q, u", "mc": "CreatorDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 19, "type": "BIB", "field": "130", "subfield": "", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 20, "type": "BIB", "field": "210", "subfield": "a, b", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 21, "type": "BIB", "field": "222", "subfield": "a, b", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 22, "type": "BIB", "field": "240", "subfield": "a, f, k, l, m, n, o, p, r, s, 6", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 23, "type": "BIB", "field": "245", "subfield": "a, b, f, g, h, k, n, p", "mc": "Title", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 24, "type": "BIB", "field": "245", "subfield": "", "mc": "TitleStatement", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 25, "type": "BIB", "field": "246", "subfield": "a, b, f, g, n, p", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 26, "type": "BIB", "field": "246", "subfield": "a, i", "mc": "AlternativeTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 27, "type": "BIB", "field": "247", "subfield": "a, b, f, g", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 28, "type": "BIB", "field": "250", "subfield": "a, b", "mc": "Edition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 29, "type": "BIB", "field": "255", "subfield": "c", "mc": "CoordinateDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 30, "type": "BIB", "field": "255", "subfield": "b", "mc": "Projection", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 31, "type": "BIB", "field": "255", "subfield": "a", "mc": "Scale", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 32, "type": "BIB", "field": "260", "subfield": "c, g", "mc": "Date", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 33, "type": "BIB", "field": "260", "subfield": "a, e", "mc": "CreationPlace", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 34, "type": "BIB", "field": "260", "subfield": "b, f", "mc": "Publisher", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 35, "type": "BIB", "field": "264|*0|", "subfield": "c", "mc": "Date", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 36, "type": "BIB", "field": "264|*1|", "subfield": "c", "mc": "Date", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 37, "type": "BIB", "field": "264|*2|", "subfield": "c", "mc": "Date", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 38, "type": "BIB", "field": "264|*3|", "subfield": "c", "mc": "Date", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 39, "type": "BIB", "field": "264", "subfield": "a", "mc": "CreationPlace", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 40, "type": "BIB", "field": "264", "subfield": "b", "mc": "Publisher", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 41, "type": "BIB", "field": "264| 4|", "subfield": "c", "mc": "CopyrightDate", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 42, "type": "BIB", "field": "300", "subfield": "a, c, e, f", "mc": "Extent", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 43, "type": "BIB", "field": "300", "subfield": "b", "mc": "Material", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 44, "type": "BIB", "field": "336", "subfield": "a", "mc": "ItemType", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 45, "type": "BIB", "field": "340", "subfield": "", "mc": "Material", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 46, "type": "BIB", "field": "352", "subfield": "a", "mc": "GeometryType", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 47, "type": "BIB", "field": "440", "subfield": "a, v", "mc": "SeriesTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 48, "type": "BIB", "field": "490", "subfield": "a, v", "mc": "SeriesTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 49, "type": "BIB", "field": "500", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 50, "type": "BIB", "field": "501", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 51, "type": "BIB", "field": "502", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 52, "type": "BIB", "field": "504", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 53, "type": "BIB", "field": "505", "subfield": "", "mc": "Contents", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 54, "type": "BIB", "field": "505", "subfield": "t", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 55, "type": "BIB", "field": "505", "subfield": "t", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 56, "type": "BIB", "field": "506", "subfield": "3, 5, a, b, c, d, e", "mc": "AccessCondition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 57, "type": "BIB", "field": "507", "subfield": "a, b", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 58, "type": "BIB", "field": "510", "subfield": "", "mc": "IndexedBy", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 59, "type": "BIB", "field": "511", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 60, "type": "BIB", "field": "520", "subfield": "", "mc": "AbstractNote", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 61, "type": "BIB", "field": "522", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 62, "type": "BIB", "field": "524", "subfield": "", "mc": "PreferredCitation", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 63, "type": "BIB", "field": "530", "subfield": "a, c, u", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 64, "type": "BIB", "field": "533", "subfield": "a, b, c, d, n", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 65, "type": "BIB", "field": "540", "subfield": "a, b, c, d, 3", "mc": "AccessCondition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 66, "type": "BIB", "field": "540", "subfield": "", "mc": "Rights", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 67, "type": "BIB", "field": "545", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 68, "type": "BIB", "field": "546", "subfield": "a, b", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 69, "type": "BIB", "field": "555", "subfield": "a, 3", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 70, "type": "BIB", "field": "561", "subfield": "a, 3", "mc": "ProvenanceUncontrolled", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 71, "type": "BIB", "field": "588", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 72, "type": "BIB", "field": "590", "subfield": "a", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 73, "type": "BIB", "field": "600", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 74, "type": "BIB", "field": "600", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 75, "type": "BIB", "field": "600", "subfield": "a, b, c, d, q", "mc": "SubjectName", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 76, "type": "BIB", "field": "600", "subfield": "t", "mc": "SubjectTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 77, "type": "BIB", "field": "600", "subfield": "a, b, c, d, e, g, j, q, u, f, h, k, l, m, n, o, p, r, s, t", "mc": "SubjectTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 78, "type": "BIB", "field": "600", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 79, "type": "BIB", "field": "600", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 80, "type": "BIB", "field": "610", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 81, "type": "BIB", "field": "610", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 82, "type": "BIB", "field": "610", "subfield": "a, b", "mc": "SubjectName", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 83, "type": "BIB", "field": "610", "subfield": "t", "mc": "SubjectTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 84, "type": "BIB", "field": "610", "subfield": "a, b, c, d, e, f, g, h, k, l, m, n, o, p, r, s, t, u", "mc": "SubjectTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 85, "type": "BIB", "field": "610", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 86, "type": "BIB", "field": "610", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 87, "type": "BIB", "field": "611", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 88, "type": "BIB", "field": "611", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 89, "type": "BIB", "field": "611", "subfield": "a, b", "mc": "SubjectName", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 90, "type": "BIB", "field": "611", "subfield": "t", "mc": "SubjectTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 91, "type": "BIB", "field": "611", "subfield": "a, c, d, e, f, g, h, j, k, l, m, n, o, p, q, s, t, u", "mc": "SubjectTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 92, "type": "BIB", "field": "611", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 93, "type": "BIB", "field": "611", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 94, "type": "BIB", "field": "630", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 95, "type": "BIB", "field": "630", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 96, "type": "BIB", "field": "630", "subfield": "a", "mc": "SubjectTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 97, "type": "BIB", "field": "630", "subfield": "a, d, f, k, l, n, p, s", "mc": "SubjectTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 98, "type": "BIB", "field": "630", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 99, "type": "BIB", "field": "630", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 100, "type": "BIB", "field": "648", "subfield": "a", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 101, "type": "BIB", "field": "650", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 102, "type": "BIB", "field": "650", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 103, "type": "BIB", "field": "650", "subfield": "a", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 104, "type": "BIB", "field": "650", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 105, "type": "BIB", "field": "650", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 106, "type": "BIB", "field": "651", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 107, "type": "BIB", "field": "651", "subfield": "a", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 108, "type": "BIB", "field": "651", "subfield": "z", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 109, "type": "BIB", "field": "651", "subfield": "x", "mc": "SubjectTopic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 110, "type": "BIB", "field": "651", "subfield": "v", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 111, "type": "BIB", "field": "655", "subfield": "", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 112, "type": "BIB", "field": "656", "subfield": "y", "mc": "SubjectEra", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 113, "type": "BIB", "field": "656", "subfield": "a", "mc": "SubjectOccupation", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 114, "type": "BIB", "field": "662", "subfield": "a, b, c, d, 2", "mc": "SubjectGeographic", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 115, "type": "BIB", "field": "690", "subfield": "a", "mc": "Genre", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 116, "type": "BIB", "field": "692", "subfield": "", "mc": "ProvenanceControlled", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 117, "type": "BIB", "field": "693", "subfield": "", "mc": "ProvenanceControlled", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 118, "type": "BIB", "field": "700", "subfield": "g, k, l, m, n, o, p, r, s, t", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 119, "type": "BIB", "field": "700", "subfield": "a, b, c, d, e, f, h, i, j, g, k, l, m, n, o, p, q, r, s, t, u, x", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 120, "type": "BIB", "field": "700", "subfield": "a, b, c, d, e", "mc": "Contributor", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 121, "type": "BIB", "field": "700", "subfield": "0", "mc": "ContributorUri", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 122, "type": "BIB", "field": "700", "subfield": "a, b, c, d, j, q, u", "mc": "ContributorDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 123, "type": "BIB", "field": "710", "subfield": "f, g, k, l, m, n, o, p, r, s, t", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 124, "type": "BIB", "field": "710", "subfield": "a, b, c, d, e, f, h, i, g, k, l, m, n, o, p, r, s, t, u, x", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 125, "type": "BIB", "field": "710", "subfield": "a, b, c, d, e", "mc": "Contributor", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 126, "type": "BIB", "field": "710", "subfield": "0", "mc": "ContributorUri", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 127, "type": "BIB", "field": "710", "subfield": "a, b, c, u", "mc": "ContributorDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 128, "type": "BIB", "field": "710", "subfield": "5", "mc": "PartOf", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 129, "type": "BIB", "field": "711", "subfield": "f, g, k, l, n, p, s, t", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 130, "type": "BIB", "field": "711", "subfield": "a, c, d, e, f, h, i, j, g, k, l, n, p, q, s, t, x", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 131, "type": "BIB", "field": "711", "subfield": "a, c, d, e", "mc": "Contributor", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 132, "type": "BIB", "field": "711", "subfield": "0", "mc": "ContributorUri", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 133, "type": "BIB", "field": "711", "subfield": "a, b, c, q", "mc": "ContributorDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 134, "type": "BIB", "field": "730", "subfield": "a, d, f, g, k, l, m, n, o, p, r, s, t", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 135, "type": "BIB", "field": "730", "subfield": "a, d, f, g, k, l, m, n, o, p, r, s, t", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 136, "type": "BIB", "field": "740", "subfield": "a, n, p", "mc": "RelatedTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 137, "type": "BIB", "field": "740", "subfield": "a, n, p", "mc": "RelatedTitleDisplay", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 138, "type": "BIB", "field": "752", "subfield": "a, b, c, d", "mc": "CreationPlace", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 139, "type": "BIB", "field": "773", "subfield": "a", "mc": "SourceCreator", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 140, "type": "BIB", "field": "773", "subfield": "d", "mc": "SourceDate", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 141, "type": "BIB", "field": "773", "subfield": "b", "mc": "SourceEdition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 142, "type": "BIB", "field": "773", "subfield": "g, i, p, t", "mc": "SourceTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 143, "type": "BIB", "field": "800", "subfield": "", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 144, "type": "BIB", "field": "810", "subfield": "", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 145, "type": "BIB", "field": "811", "subfield": "", "mc": "AlternativeTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 146, "type": "BIB", "field": "830", "subfield": "a, v", "mc": "SeriesTitle", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 147, "type": "BIB", "field": "856|42|", "subfield": "3, u", "mc": "RelatedResourceOnline", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 148, "type": "BIB", "field": "856|41|", "subfield": "3, u", "mc": "ResourceVersionOnline", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 149, "type": "BIB", "field": "954", "subfield": "a, d", "mc": "ReparitiveDescription", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 150, "type": "MFHD", "field": "506", "subfield": "3, a", "mc": "AccessCondition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 151, "type": "MFHD", "field": "541", "subfield": "a, d, 3", "mc": "ProvenanceUncontrolled", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 152, "type": "MFHD", "field": "561", "subfield": "", "mc": "ProvenanceUncontrolled", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 153, "type": "MFHD", "field": "562", "subfield": "a, b, c", "mc": "Description", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 154, "type": "MFHD", "field": "845", "subfield": "a, b, c, d, u, 3, 5, 6, 8", "mc": "AccessCondition", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 155, "type": "MFHD", "field": "852", "subfield": "k, h, i, m, t", "mc": "CallNumber", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 156, "type": "MFHD", "field": "852", "subfield": "k, h, i, m, t, z", "mc": "CallNumberWithPublicNote", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 157, "type": "MFHD", "field": "852", "subfield": "b", "mc": "Repository", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 158, "type": "ITEM", "field": "ItemEnum / Chron", "subfield": "", "mc": "VolumeEnumeration", "dcs-group": "Collection Information", "dcs-label": "Container / Volume", "dcs": "", "findit": "", "notes": "" },
-          { "recid": 159, "type": "ITEM", "field": "Barcode", "subfield": "", "mc": "", "dcs-group": "", "dcs-label": "", "dcs": "", "findit": "", "notes": "" }
-        ]
-    },
-    grid2: {
-        name: 'grid2',
-        show: {footer: true, toolbar: true},
-        columns: [
-          { field: 'type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
-          { field: 'field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
-          { field: 'inherited', text: 'Inherited', size: '70px', sortable: true, resizable: true },
-          { field: 'mc', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
-          { field: 'dcs-group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
-          { field: 'dcs-label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
-          { field: 'dcs', text: 'DCS Display', size: '200px', sortable: false, resizable: true},
-          { field: 'notes', text: 'Notes', size: '100px', sortable: false, resizable: true}
-        ],
-        records: [
-          { recid: 1, type: 'ArchivalObject', field: 'Title', inherited: 'Y', mc: 'Title', 'dcs-group': 'Description', 'dcs-label': 'Title' },
-          { recid: 2, type: 'ArchivalObject', field: 'Date', inherited: 'Y', mc: 'Date', 'dcs-group': 'Description', 'dcs-label': 'Date' }
-        ]
-    },
-    grid3: {
-        name: 'grid3',
-        show: {footer: true, toolbar: true},
-        columns: [
-            { field: 'type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
-            { field: 'field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'subfield', text: 'Subfields', size: '180px', resizable: true },
-            { field: 'mc', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'dcs-group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
-            { field: 'dcs-label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
-            { field: 'dcs', text: 'DCS Display', size: '200px', sortable: false, resizable: true},
-            { field: 'findit', text: 'FindIt Display', size: '200px', sortable: false, resizable: true},
-            { field: 'notes', text: 'Notes', size: '100px', sortable: false, resizable: true}
-        ],
-        "records": [
-          { "recid": 1, "type": "BIB", "field": "001", "subfield": "", "mc": "OrbisBibId", "dcs-group": "Identifiers", "dcs-label": "Orbis Identifier", "dcs": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_dcs.png\"/>", "findit": "<img style=\"height: 80%; width: 80%; object-fit: contain\" src=\"images/bibid_findit.png\"/>" }
-
-        ]
-
-    },
-    grid4: {
-        name: 'grid4',
-        show: {footer: true, toolbar: true},
-        columns: [
-            { field: 'state', text: 'Hey', size: '80px' },
-            { field: 'title', text: 'Hey hey hey', size: '100%' },
-            { field: 'priority', text: 'Priority', size: '80px', attr: 'align="center"' }
-        ],
-        records: [
-            { recid: 1, state: 'Open', title: 'Short title for the record', priority: 2 },
-            { recid: 2, state: 'Open', title: 'Short title for the record', priority: 3 },
-            { recid: 3, state: 'Closed', title: 'Short title for the record', priority: 1 }
-        ]
-    }
-};
-
-$(function () {
-    // initialization
-    $('#main').w2layout(config.layout);
-    w2ui.layout.html('left', $().w2sidebar(config.sidebar));
-    w2ui.layout.html('main', $().w2grid(config.grid1));
-    // in memory initialization
-    $().w2grid(config.grid2);
-    $().w2grid(config.grid3);
-    $().w2grid(config.grid4);
-    $().w2grid(config.grid5);
-    $().w2grid(config.grid6);
-    $().w2grid(config.grid7);
-});
-</script>
-
-</body>
-</html>
+    }, 
+    
+        grid1 : {
+            name: 'grid1',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
+                { field: 'Field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Subfield', text: 'Subfields', size: '180px', resizable: true },
+                { field: 'MetadataCloud', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'DCS-Group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
+                { field: 'DCS-Label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Note', text: 'Notes', size: '330px', sortable: false, resizable: true}
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "Type": "BIB", 
+        "Field": "001", 
+        "MetadataCloud": "OrbisBibId", 
+        "DCS-Group": "Identifiers", "DCS-Label": "Orbis Record", 
+        "Note": "Test with <a href=\"https:\/\/developers.google.com\/drive\/api\/v3\/mime-types\">link<\/a>"}
+            , 
+        {"recid": 2, 
+        
+        "Type": "BIB", 
+        "Field": "008[18:21]", 
+        "MetadataCloud": "IllustrativeMatter", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 3, 
+        
+        "Type": "BIB", 
+        "Field": "008[35:37]", 
+        "MetadataCloud": "LanguageCode", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 4, 
+        
+        "Type": "BIB", 
+        "Field": "008[35:37]", 
+        "MetadataCloud": "Language", 
+        "DCS-Group": "Description", "DCS-Label": "Language"}
+            , 
+        {"recid": 5, 
+        
+        "Type": "BIB", 
+        "Field": "034", 
+        "Subfield": "d, e, f, g", 
+        "MetadataCloud": "Coordinate", 
+        "DCS-Group": "Description", "DCS-Label": "Coordinates"}
+            , 
+        {"recid": 6, 
+        
+        "Type": "BIB", 
+        "Field": "034", 
+        "Subfield": "d", 
+        "MetadataCloud": "CoordinateWest", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 7, 
+        
+        "Type": "BIB", 
+        "Field": "034", 
+        "Subfield": "e", 
+        "MetadataCloud": "CoordinateEast", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 8, 
+        
+        "Type": "BIB", 
+        "Field": "034", 
+        "Subfield": "f", 
+        "MetadataCloud": "CoordinateNorth", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 9, 
+        
+        "Type": "BIB", 
+        "Field": "034", 
+        "Subfield": "g", 
+        "MetadataCloud": "CoordinateSouth", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 10, 
+        
+        "Type": "BIB", 
+        "Field": "041", 
+        "Subfield": "a", 
+        "MetadataCloud": "LanguageCode", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 11, 
+        
+        "Type": "BIB", 
+        "Field": "041", 
+        "Subfield": "a", 
+        "MetadataCloud": "Language", 
+        "DCS-Group": "Description", "DCS-Label": "Language"}
+            , 
+        {"recid": 12, 
+        
+        "Type": "BIB", 
+        "Field": "043", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectGeographicCode", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 13, 
+        
+        "Type": "BIB", 
+        "Field": "050", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "LibraryOfCongressClassificationNumber", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 14, 
+        
+        "Type": "BIB", 
+        "Field": "100", 
+        "MetadataCloud": "Creator", 
+        "DCS-Group": "Description", "DCS-Label": "Creator"}
+            , 
+        {"recid": 15, 
+        
+        "Type": "BIB", 
+        "Field": "110", 
+        "MetadataCloud": "Creator", 
+        "DCS-Group": "Description", "DCS-Label": "Creator"}
+            , 
+        {"recid": 16, 
+        
+        "Type": "BIB", 
+        "Field": "110", 
+        "Subfield": "a, b, c, e, u", 
+        "MetadataCloud": "CreatorDisplay", 
+        "DCS-Group": "Description", "DCS-Label": "Creator"}
+            , 
+        {"recid": 17, 
+        
+        "Type": "BIB", 
+        "Field": "111", 
+        "MetadataCloud": "Creator", 
+        "DCS-Group": "Description", "DCS-Label": "Creator"}
+            , 
+        {"recid": 18, 
+        
+        "Type": "BIB", 
+        "Field": "111", 
+        "Subfield": "a, c, e, j, q, u", 
+        "MetadataCloud": "CreatorDisplay", 
+        "DCS-Group": "Description", "DCS-Label": "Creator"}
+            , 
+        {"recid": 19, 
+        
+        "Type": "BIB", 
+        "Field": "130", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 20, 
+        
+        "Type": "BIB", 
+        "Field": "210", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 21, 
+        
+        "Type": "BIB", 
+        "Field": "222", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 22, 
+        
+        "Type": "BIB", 
+        "Field": "240", 
+        "Subfield": "a, f, k, l, m, n, o, p, r, s, 6", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 23, 
+        
+        "Type": "BIB", 
+        "Field": "245", 
+        "Subfield": "a, b, f, g, h, k, n, p", 
+        "MetadataCloud": "Title", 
+        "DCS-Group": "Description", "DCS-Label": "Title"}
+            , 
+        {"recid": 24, 
+        
+        "Type": "BIB", 
+        "Field": "245", 
+        "MetadataCloud": "TitleStatement", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 25, 
+        
+        "Type": "BIB", 
+        "Field": "246", 
+        "Subfield": "a, b, f, g, n, p", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 26, 
+        
+        "Type": "BIB", 
+        "Field": "246", 
+        "Subfield": "a, i", 
+        "MetadataCloud": "AlternativeTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 27, 
+        
+        "Type": "BIB", 
+        "Field": "247", 
+        "Subfield": "a, b, f, g", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 28, 
+        
+        "Type": "BIB", 
+        "Field": "250", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "Edition", 
+        "DCS-Group": "", "DCS-Label": "Edition"}
+            , 
+        {"recid": 29, 
+        
+        "Type": "BIB", 
+        "Field": "255", 
+        "Subfield": "c", 
+        "MetadataCloud": "CoordinateDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 30, 
+        
+        "Type": "BIB", 
+        "Field": "255", 
+        "Subfield": "b", 
+        "MetadataCloud": "Projection", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 31, 
+        
+        "Type": "BIB", 
+        "Field": "255", 
+        "Subfield": "a", 
+        "MetadataCloud": "Scale", 
+        "DCS-Group": "", "DCS-Label": "Scale"}
+            , 
+        {"recid": 32, 
+        
+        "Type": "BIB", 
+        "Field": "260", 
+        "Subfield": "c, g", 
+        "MetadataCloud": "Date", 
+        "DCS-Group": "", "DCS-Label": "Published/Created"}
+            , 
+        {"recid": 33, 
+        
+        "Type": "BIB", 
+        "Field": "260", 
+        "Subfield": "a, e", 
+        "MetadataCloud": "CreationPlace", 
+        "DCS-Group": "", "DCS-Label": "N/A"}
+            , 
+        {"recid": 34, 
+        
+        "Type": "BIB", 
+        "Field": "260", 
+        "Subfield": "b, f", 
+        "MetadataCloud": "Publisher", 
+        "DCS-Group": "", "DCS-Label": "Publisher"}
+            , 
+        {"recid": 35, 
+        
+        "Type": "BIB", 
+        "Field": "264|*0|", 
+        "Subfield": "c", 
+        "MetadataCloud": "Date", 
+        "DCS-Group": "", "DCS-Label": "Published/Created"}
+            , 
+        {"recid": 36, 
+        
+        "Type": "BIB", 
+        "Field": "264|*1|", 
+        "Subfield": "c", 
+        "MetadataCloud": "Date", 
+        "DCS-Group": "", "DCS-Label": "Published/Created"}
+            , 
+        {"recid": 37, 
+        
+        "Type": "BIB", 
+        "Field": "264|*2|", 
+        "Subfield": "c", 
+        "MetadataCloud": "Date", 
+        "DCS-Group": "", "DCS-Label": "Published/Created"}
+            , 
+        {"recid": 38, 
+        
+        "Type": "BIB", 
+        "Field": "264|*3|", 
+        "Subfield": "c", 
+        "MetadataCloud": "Date", 
+        "DCS-Group": "", "DCS-Label": "Published/Created"}
+            , 
+        {"recid": 39, 
+        
+        "Type": "BIB", 
+        "Field": "264", 
+        "Subfield": "a", 
+        "MetadataCloud": "CreationPlace", 
+        "DCS-Group": "", "DCS-Label": "N/A"}
+            , 
+        {"recid": 40, 
+        
+        "Type": "BIB", 
+        "Field": "264", 
+        "Subfield": "b", 
+        "MetadataCloud": "Publisher", 
+        "DCS-Group": "", "DCS-Label": "Publisher"}
+            , 
+        {"recid": 41, 
+        
+        "Type": "BIB", 
+        "Field": "264| 4|", 
+        "Subfield": "c", 
+        "MetadataCloud": "CopyrightDate", 
+        "DCS-Group": "", "DCS-Label": "Copright Date"}
+            , 
+        {"recid": 42, 
+        
+        "Type": "BIB", 
+        "Field": "300", 
+        "Subfield": "a, c, e, f", 
+        "MetadataCloud": "Extent", 
+        "DCS-Group": "", "DCS-Label": "Extent"}
+            , 
+        {"recid": 43, 
+        
+        "Type": "BIB", 
+        "Field": "300", 
+        "Subfield": "b", 
+        "MetadataCloud": "Material", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Material"}
+            , 
+        {"recid": 44, 
+        
+        "Type": "BIB", 
+        "Field": "336", 
+        "Subfield": "a", 
+        "MetadataCloud": "ItemType", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Resource Type"}
+            , 
+        {"recid": 45, 
+        
+        "Type": "BIB", 
+        "Field": "340", 
+        "MetadataCloud": "Material", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Material"}
+            , 
+        {"recid": 46, 
+        
+        "Type": "BIB", 
+        "Field": "352", 
+        "Subfield": "a", 
+        "MetadataCloud": "GeometryType", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 47, 
+        
+        "Type": "BIB", 
+        "Field": "440", 
+        "Subfield": "a, v", 
+        "MetadataCloud": "SeriesTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 48, 
+        
+        "Type": "BIB", 
+        "Field": "490", 
+        "Subfield": "a, v", 
+        "MetadataCloud": "SeriesTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 49, 
+        
+        "Type": "BIB", 
+        "Field": "500", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 50, 
+        
+        "Type": "BIB", 
+        "Field": "501", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 51, 
+        
+        "Type": "BIB", 
+        "Field": "502", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 52, 
+        
+        "Type": "BIB", 
+        "Field": "504", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 53, 
+        
+        "Type": "BIB", 
+        "Field": "505", 
+        "MetadataCloud": "Contents", 
+        "DCS-Group": "", "DCS-Label": "Contents"}
+            , 
+        {"recid": 54, 
+        
+        "Type": "BIB", 
+        "Field": "505", 
+        "Subfield": "t", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 55, 
+        
+        "Type": "BIB", 
+        "Field": "505", 
+        "Subfield": "t", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 56, 
+        
+        "Type": "BIB", 
+        "Field": "506", 
+        "Subfield": "3, 5, a, b, c, d, e", 
+        "MetadataCloud": "AccessCondition", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 57, 
+        
+        "Type": "BIB", 
+        "Field": "507", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 58, 
+        
+        "Type": "BIB", 
+        "Field": "510", 
+        "MetadataCloud": "IndexedBy", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 59, 
+        
+        "Type": "BIB", 
+        "Field": "511", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 60, 
+        
+        "Type": "BIB", 
+        "Field": "520", 
+        "MetadataCloud": "AbstractNote", 
+        "DCS-Group": "Description", "DCS-Label": "Abstract"}
+            , 
+        {"recid": 61, 
+        
+        "Type": "BIB", 
+        "Field": "522", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 62, 
+        
+        "Type": "BIB", 
+        "Field": "524", 
+        "MetadataCloud": "PreferredCitation", 
+        "DCS-Group": "Access And Usage Rights", "DCS-Label": "Citation"}
+            , 
+        {"recid": 63, 
+        
+        "Type": "BIB", 
+        "Field": "530", 
+        "Subfield": "a, c, u", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 64, 
+        
+        "Type": "BIB", 
+        "Field": "533", 
+        "Subfield": "a, b, c, d, n", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 65, 
+        
+        "Type": "BIB", 
+        "Field": "540", 
+        "Subfield": "a, b, c, d, 3", 
+        "MetadataCloud": "AccessCondition", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 66, 
+        
+        "Type": "BIB", 
+        "Field": "540", 
+        "MetadataCloud": "Rights", 
+        "DCS-Group": "", "DCS-Label": "Rights Statement"}
+            , 
+        {"recid": 67, 
+        
+        "Type": "BIB", 
+        "Field": "545", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 68, 
+        
+        "Type": "BIB", 
+        "Field": "546", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 69, 
+        
+        "Type": "BIB", 
+        "Field": "555", 
+        "Subfield": "a, 3", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 70, 
+        
+        "Type": "BIB", 
+        "Field": "561", 
+        "Subfield": "a, 3", 
+        "MetadataCloud": "ProvenanceUncontrolled", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 71, 
+        
+        "Type": "BIB", 
+        "Field": "588", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 72, 
+        
+        "Type": "BIB", 
+        "Field": "590", 
+        "Subfield": "a", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 73, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 74, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 75, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "a, b, c, d, q", 
+        "MetadataCloud": "SubjectName", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Name)"}
+            , 
+        {"recid": 76, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "t", 
+        "MetadataCloud": "SubjectTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 77, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "a, b, c, d, e, g, j, q, u, f, h, k, l, m, n, o, p, r, s, t", 
+        "MetadataCloud": "SubjectTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 78, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 79, 
+        
+        "Type": "BIB", 
+        "Field": "600", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 80, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 81, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 82, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "SubjectName", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Name)"}
+            , 
+        {"recid": 83, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "t", 
+        "MetadataCloud": "SubjectTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 84, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "a, b, c, d, e, f, g, h, k, l, m, n, o, p, r, s, t, u", 
+        "MetadataCloud": "SubjectTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 85, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 86, 
+        
+        "Type": "BIB", 
+        "Field": "610", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 87, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 88, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 89, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "a, b", 
+        "MetadataCloud": "SubjectName", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Name)"}
+            , 
+        {"recid": 90, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "t", 
+        "MetadataCloud": "SubjectTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 91, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "a, c, d, e, f, g, h, j, k, l, m, n, o, p, q, s, t, u", 
+        "MetadataCloud": "SubjectTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 92, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 93, 
+        
+        "Type": "BIB", 
+        "Field": "611", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 94, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 95, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 96, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 97, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "a, d, f, k, l, n, p, s", 
+        "MetadataCloud": "SubjectTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 98, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 99, 
+        
+        "Type": "BIB", 
+        "Field": "630", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 100, 
+        
+        "Type": "BIB", 
+        "Field": "648", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 101, 
+        
+        "Type": "BIB", 
+        "Field": "650", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 102, 
+        
+        "Type": "BIB", 
+        "Field": "650", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 103, 
+        
+        "Type": "BIB", 
+        "Field": "650", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 104, 
+        
+        "Type": "BIB", 
+        "Field": "650", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 105, 
+        
+        "Type": "BIB", 
+        "Field": "650", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 106, 
+        
+        "Type": "BIB", 
+        "Field": "651", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 107, 
+        
+        "Type": "BIB", 
+        "Field": "651", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 108, 
+        
+        "Type": "BIB", 
+        "Field": "651", 
+        "Subfield": "z", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 109, 
+        
+        "Type": "BIB", 
+        "Field": "651", 
+        "Subfield": "x", 
+        "MetadataCloud": "SubjectTopic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Topic)"}
+            , 
+        {"recid": 110, 
+        
+        "Type": "BIB", 
+        "Field": "651", 
+        "Subfield": "v", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 111, 
+        
+        "Type": "BIB", 
+        "Field": "655", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 112, 
+        
+        "Type": "BIB", 
+        "Field": "656", 
+        "Subfield": "y", 
+        "MetadataCloud": "SubjectEra", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 113, 
+        
+        "Type": "BIB", 
+        "Field": "656", 
+        "Subfield": "a", 
+        "MetadataCloud": "SubjectOccupation", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 114, 
+        
+        "Type": "BIB", 
+        "Field": "662", 
+        "Subfield": "a, b, c, d, 2", 
+        "MetadataCloud": "SubjectGeographic", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Subject (Geographic)"}
+            , 
+        {"recid": 115, 
+        
+        "Type": "BIB", 
+        "Field": "690", 
+        "Subfield": "a", 
+        "MetadataCloud": "Genre", 
+        "DCS-Group": "Subjects, Formats, And Genres", "DCS-Label": "Genre"}
+            , 
+        {"recid": 116, 
+        
+        "Type": "BIB", 
+        "Field": "692", 
+        "MetadataCloud": "ProvenanceControlled", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 117, 
+        
+        "Type": "BIB", 
+        "Field": "693", 
+        "MetadataCloud": "ProvenanceControlled", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 118, 
+        
+        "Type": "BIB", 
+        "Field": "700", 
+        "Subfield": "g, k, l, m, n, o, p, r, s, t", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 119, 
+        
+        "Type": "BIB", 
+        "Field": "700", 
+        "Subfield": "a, b, c, d, e, f, h, i, j, g, k, l, m, n, o, p, q, r, s, t, u, x", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 120, 
+        
+        "Type": "BIB", 
+        "Field": "700", 
+        "Subfield": "a, b, c, d, e", 
+        "MetadataCloud": "Contributor", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 121, 
+        
+        "Type": "BIB", 
+        "Field": "700", 
+        "Subfield": "0", 
+        "MetadataCloud": "ContributorUri", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 122, 
+        
+        "Type": "BIB", 
+        "Field": "700", 
+        "Subfield": "a, b, c, d, j, q, u", 
+        "MetadataCloud": "ContributorDisplay", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 123, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "f, g, k, l, m, n, o, p, r, s, t", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 124, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "a, b, c, d, e, f, h, i, g, k, l, m, n, o, p, r, s, t, u, x", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 125, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "a, b, c, d, e", 
+        "MetadataCloud": "Contributor", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 126, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "0", 
+        "MetadataCloud": "ContributorUri", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 127, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "a, b, c, u", 
+        "MetadataCloud": "ContributorDisplay", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 128, 
+        
+        "Type": "BIB", 
+        "Field": "710", 
+        "Subfield": "5", 
+        "MetadataCloud": "PartOf", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 129, 
+        
+        "Type": "BIB", 
+        "Field": "711", 
+        "Subfield": "f, g, k, l, n, p, s, t", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 130, 
+        
+        "Type": "BIB", 
+        "Field": "711", 
+        "Subfield": "a, c, d, e, f, h, i, j, g, k, l, n, p, q, s, t, x", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 131, 
+        
+        "Type": "BIB", 
+        "Field": "711", 
+        "Subfield": "a, c, d, e", 
+        "MetadataCloud": "Contributor", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 132, 
+        
+        "Type": "BIB", 
+        "Field": "711", 
+        "Subfield": "0", 
+        "MetadataCloud": "ContributorUri", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 133, 
+        
+        "Type": "BIB", 
+        "Field": "711", 
+        "Subfield": "a, b, c, q", 
+        "MetadataCloud": "ContributorDisplay", 
+        "DCS-Group": "Description", "DCS-Label": "Contributor"}
+            , 
+        {"recid": 134, 
+        
+        "Type": "BIB", 
+        "Field": "730", 
+        "Subfield": "a, d, f, g, k, l, m, n, o, p, r, s, t", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 135, 
+        
+        "Type": "BIB", 
+        "Field": "730", 
+        "Subfield": "a, d, f, g, k, l, m, n, o, p, r, s, t", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 136, 
+        
+        "Type": "BIB", 
+        "Field": "740", 
+        "Subfield": "a, n, p", 
+        "MetadataCloud": "RelatedTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 137, 
+        
+        "Type": "BIB", 
+        "Field": "740", 
+        "Subfield": "a, n, p", 
+        "MetadataCloud": "RelatedTitleDisplay", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 138, 
+        
+        "Type": "BIB", 
+        "Field": "752", 
+        "Subfield": "a, b, c, d", 
+        "MetadataCloud": "CreationPlace", 
+        "DCS-Group": "", "DCS-Label": "N/A"}
+            , 
+        {"recid": 139, 
+        
+        "Type": "BIB", 
+        "Field": "773", 
+        "Subfield": "a", 
+        "MetadataCloud": "SourceCreator", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Collection/Other Creator"}
+            , 
+        {"recid": 140, 
+        
+        "Type": "BIB", 
+        "Field": "773", 
+        "Subfield": "d", 
+        "MetadataCloud": "SourceDate", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Collection Date"}
+            , 
+        {"recid": 141, 
+        
+        "Type": "BIB", 
+        "Field": "773", 
+        "Subfield": "b", 
+        "MetadataCloud": "SourceEdition", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Collection Edition"}
+            , 
+        {"recid": 142, 
+        
+        "Type": "BIB", 
+        "Field": "773", 
+        "Subfield": "g, i, p, t", 
+        "MetadataCloud": "SourceTitle", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Collection Title"}
+            , 
+        {"recid": 143, 
+        
+        "Type": "BIB", 
+        "Field": "800", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 144, 
+        
+        "Type": "BIB", 
+        "Field": "810", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 145, 
+        
+        "Type": "BIB", 
+        "Field": "811", 
+        "MetadataCloud": "AlternativeTitle", 
+        "DCS-Group": "Description", "DCS-Label": "Alternative Title"}
+            , 
+        {"recid": 146, 
+        
+        "Type": "BIB", 
+        "Field": "830", 
+        "Subfield": "a, v", 
+        "MetadataCloud": "SeriesTitle", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 147, 
+        
+        "Type": "BIB", 
+        "Field": "856|42|", 
+        "Subfield": "3, u", 
+        "MetadataCloud": "RelatedResourceOnline", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 148, 
+        
+        "Type": "BIB", 
+        "Field": "856|41|", 
+        "Subfield": "3, u", 
+        "MetadataCloud": "ResourceVersionOnline", 
+        "DCS-Group": "", "DCS-Label": "", 
+        "Note": "The following URL patterns are filtered out, due to their self-referential nature in this context:  | brbl-archive.library.yale.edu | divinity-adhoc.library.yale.edu\/FosterPapers | digital.library.yale.edu | beinecke.library.yale.edu | beinecke1.library.yale.edu"}
+            , 
+        {"recid": 149, 
+        
+        "Type": "BIB", 
+        "Field": "954", 
+        "Subfield": "a, d", 
+        "MetadataCloud": "ReparitiveDescription", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 150, 
+        
+        "Type": "MFHD", 
+        "Field": "506", 
+        "Subfield": "3, a", 
+        "MetadataCloud": "AccessCondition", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 151, 
+        
+        "Type": "MFHD", 
+        "Field": "541", 
+        "Subfield": "a, d, 3", 
+        "MetadataCloud": "ProvenanceUncontrolled", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 152, 
+        
+        "Type": "MFHD", 
+        "Field": "561", 
+        "MetadataCloud": "ProvenanceUncontrolled", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 153, 
+        
+        "Type": "MFHD", 
+        "Field": "562", 
+        "Subfield": "a, b, c", 
+        "MetadataCloud": "Description", 
+        "DCS-Group": "Description", "DCS-Label": "Description"}
+            , 
+        {"recid": 154, 
+        
+        "Type": "MFHD", 
+        "Field": "845", 
+        "Subfield": "a, b, c, d, u, 3, 5, 6, 8", 
+        "MetadataCloud": "AccessCondition", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 155, 
+        
+        "Type": "MFHD", 
+        "Field": "852", 
+        "Subfield": "k, h, i, m, t", 
+        "MetadataCloud": "CallNumber", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Call Number"}
+            , 
+        {"recid": 156, 
+        
+        "Type": "MFHD", 
+        "Field": "852", 
+        "Subfield": "k, h, i, m, t, z", 
+        "MetadataCloud": "CallNumberWithPublicNote", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 157, 
+        
+        "Type": "MFHD", 
+        "Field": "852", 
+        "Subfield": "b", 
+        "MetadataCloud": "Repository", 
+        "DCS-Group": "", "DCS-Label": ""}
+            , 
+        {"recid": 158, 
+        
+        "Type": "ITEM", 
+        "Field": "ItemEnum \/ Chron", 
+        "MetadataCloud": "VolumeEnumeration", 
+        "DCS-Group": "Collection Information", "DCS-Label": "Container / Volume"}
+            , 
+        {"recid": 159, 
+        
+        "Type": "ITEM", 
+        "Field": "Barcode", 
+        "MetadataCloud": "OrbisBarcode", 
+        "DCS-Group": "", "DCS-Label": ""}
+            ]
+         }, 
+        grid2 : {
+            name: 'grid2',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Type', text: 'Record Type', size: '50px', sortable: true, resizable: true },
+                { field: 'Field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Inherited', text: 'Inherited?', size: '80px', resizable: true },
+                { field: 'MetadataCloud', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'DCS-Group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
+                { field: 'DCS-Label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Note', text: 'Notes', size: '330px', sortable: false, resizable: true}
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "Type": "Note", 
+        "Field": "abstract", 
+        "Inherited": "N", 
+        "MetadataCloud": "AbstractNote", 
+        "DCS-Group": "Description", "DCS-Label": "Abstract", 
+        "Note": "EAD tags are stripped."}
+            ]
+         }, 
+        grid3 : {
+            name: 'grid3',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'FDID', text: 'FDID', size: '50px', sortable: true, resizable: true },
+                { field: 'Label', text: 'Field Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Enabled', text: 'Enabled?', size: '80px', resizable: true },
+                { field: 'MetadataCloud', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'DCS-Group', text: 'DCS Group', size: '180px', sortable: true, resizable: true },
+                { field: 'DCS-Label', text: 'DCS Label', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Note', text: 'Notes', size: '330px', sortable: false, resizable: true}
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "FDID": "87", 
+        "Label": "Abstract", 
+        "MetadataCloud": "AbstractNote", 
+        "DCS-Group": "Description", "DCS-Label": "Abstract", 
+        "Enabled": "TRUE", }
+            ]
+         }, 
+        grid4 : {
+            name: 'grid4',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Type', text: 'Record Type', size: '150px', sortable: true, resizable: true },
+                { field: 'Field', text: 'Field', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Sourced from Managment App?', text: 'Sourced from Managment App?', size: '80px', resizable: true },
+                { field: 'Mandatory?', text: 'Mandatory?', size: '80px', sortable: true, resizable: true },
+                { field: 'Available Values', text: 'Available Values', size: '220px', sortable: true, resizable: true },
+                { field: 'Example', text: 'Example', size: '220px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Note', text: 'Notes', size: '330px', sortable: false, resizable: true}
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "OID", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "\d{N,N}?", }
+            , 
+        {"recid": 2, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Adminstrative Set", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "arts | brbl | div | jss | med | mssa | mus | sml | wal", }
+            , 
+        {"recid": 3, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Source (metadata)", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "aspace | ladybird | ils", }
+            , 
+        {"recid": 4, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Visibility", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "private | public | yale community only", }
+            , 
+        {"recid": 5, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Project ID", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "\d{N,N}?", }
+            , 
+        {"recid": 6, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Rights Statement", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "Text, including HTML", }
+            , 
+        {"recid": 7, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Extent of Digitization", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "complete | partial", }
+            , 
+        {"recid": 8, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Digitzation Note", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "Text (including HTML?)", }
+            , 
+        {"recid": 9, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "ILS BIB ID", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 10, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "ILS MFHD ID", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 11, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "ILS ITEM ID", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 12, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Barcode", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 13, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "ArchivesSpace URI", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 14, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Viewing Direction", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "left-to-right | right-to-left | top-to-bottom | bottom-to-top", }
+            , 
+        {"recid": 15, 
+        
+        "Type": "Object \/ Parent", 
+        "Field": "Display Layout", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "continuous | individuals | pages", }
+            , 
+        {"recid": 16, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "OID", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "\d{N,N}?", }
+            , 
+        {"recid": 17, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Parent OID", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", 
+        "Available Values": "\d{N,N}?", }
+            , 
+        {"recid": 18, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Width", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "Y", }
+            , 
+        {"recid": 19, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Height", 
+        "Sourced from Managment App?": "N", 
+        "Mandatory?": "Y", }
+            , 
+        {"recid": 20, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Order", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "Y", }
+            , 
+        {"recid": 21, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Label", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 22, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Caption", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", }
+            , 
+        {"recid": 23, 
+        
+        "Type": "Image \/ Child", 
+        "Field": "Viewing Hint", 
+        "Sourced from Managment App?": "Y", 
+        "Mandatory?": "N", 
+        "Available Values": "facing-pages | non-paged", }
+            ]
+         }, 
+        grid5 : {
+            name: 'grid5',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Label', text: 'DCS Label', size: '150px', sortable: true, resizable: true },
+                { field: 'Group', text: 'DCS Group', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'MetadataCloud', text: 'JSON Key', size: '80px', resizable: true },
+                { field: 'Search Index', text: 'Indexed?', size: '80px', sortable: true, resizable: true },
+                { field: 'Facet', text: 'Facet?', size: '80px', sortable: true, resizable: true },
+                { field: 'Sort Option', text: 'Sortable?', size: '80px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Example', text: 'Example', size: '330px', sortable: false, resizable: true}
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "Label": "Abstract", 
+        "Group": "Description", 
+        "MetadataCloud": "AbstractNote", 
+        "Search Index": "Y", 
+        "Facet": "N", 
+        "Sort Option": "N", 
+        "Example": "https:\/\/collections.library.yale.edu\/catalog?f[abstract_tesim][]=humorous", }
+            , 
+        {"recid": 3, 
+        
+        "Label": "Alternative Title", 
+        "Group": "Description", 
+        "MetadataCloud": "AlternativeTitle", }
+            , 
+        {"recid": 5, 
+        
+        "Label": "Call Number", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "CallNumber", }
+            , 
+        {"recid": 7, 
+        
+        "Label": "Contents", 
+        "MetadataCloud": "Contents", }
+            , 
+        {"recid": 8, 
+        
+        "Label": "Contributor", 
+        "Group": "Description", 
+        "MetadataCloud": "Contributor", }
+            , 
+        {"recid": 9, 
+        
+        "Label": "Contributor", 
+        "Group": "Description", 
+        "MetadataCloud": "ContributorDisplay", }
+            , 
+        {"recid": 11, 
+        
+        "Label": "Coordinates", 
+        "Group": "Description", 
+        "MetadataCloud": "Coordinate", }
+            , 
+        {"recid": 17, 
+        
+        "Label": "Copright Date", 
+        "MetadataCloud": "CopyrightDate", }
+            , 
+        {"recid": 18, 
+        
+        "Label": "N\/A", 
+        "MetadataCloud": "CreationPlace", }
+            , 
+        {"recid": 19, 
+        
+        "Label": "Creator", 
+        "Group": "Description", 
+        "MetadataCloud": "Creator", 
+        "Search Index": "Y", 
+        "Facet": "Y", 
+        "Sort Option": "Y", }
+            , 
+        {"recid": 20, 
+        
+        "Label": "Creator", 
+        "Group": "Description", 
+        "MetadataCloud": "CreatorDisplay", }
+            , 
+        {"recid": 21, 
+        
+        "Label": "Published\/Created", 
+        "MetadataCloud": "Date", }
+            , 
+        {"recid": 22, 
+        
+        "Label": "Description", 
+        "Group": "Description", 
+        "MetadataCloud": "Description", }
+            , 
+        {"recid": 23, 
+        
+        "Label": "Edition", 
+        "MetadataCloud": "Edition", }
+            , 
+        {"recid": 24, 
+        
+        "Label": "Extent", 
+        "MetadataCloud": "Extent", }
+            , 
+        {"recid": 25, 
+        
+        "Label": "Genre", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "Genre", }
+            , 
+        {"recid": 29, 
+        
+        "Label": "Resource Type", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "ItemType", }
+            , 
+        {"recid": 30, 
+        
+        "Label": "Language", 
+        "Group": "Description", 
+        "MetadataCloud": "Language", }
+            , 
+        {"recid": 33, 
+        
+        "Label": "Material", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "Material", }
+            , 
+        {"recid": 34, 
+        
+        "Label": "Orbis Record", 
+        "Group": "Identifiers", 
+        "MetadataCloud": "OrbisBibId", 
+        "Search Index": "Y", 
+        "Facet": "N", 
+        "Sort Option": "N", }
+            , 
+        {"recid": 36, 
+        
+        "Label": "Citation", 
+        "Group": "Access And Usage Rights", 
+        "MetadataCloud": "PreferredCitation", }
+            , 
+        {"recid": 40, 
+        
+        "Label": "Publisher", 
+        "MetadataCloud": "Publisher", }
+            , 
+        {"recid": 46, 
+        
+        "Label": "Rights Statement", 
+        "MetadataCloud": "Rights", }
+            , 
+        {"recid": 47, 
+        
+        "Label": "Scale", 
+        "MetadataCloud": "Scale", }
+            , 
+        {"recid": 49, 
+        
+        "Label": "Collection\/Other Creator", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "SourceCreator", }
+            , 
+        {"recid": 50, 
+        
+        "Label": "Collection Date", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "SourceDate", }
+            , 
+        {"recid": 51, 
+        
+        "Label": "Collection Edition", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "SourceEdition", }
+            , 
+        {"recid": 52, 
+        
+        "Label": "Collection Title", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "SourceTitle", }
+            , 
+        {"recid": 54, 
+        
+        "Label": "Subject (Geographic)", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "SubjectGeographic", }
+            , 
+        {"recid": 56, 
+        
+        "Label": "Subject (Name)", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "SubjectName", }
+            , 
+        {"recid": 60, 
+        
+        "Label": "Subject (Topic)", 
+        "Group": "Subjects, Formats, And Genres", 
+        "MetadataCloud": "SubjectTopic", }
+            , 
+        {"recid": 61, 
+        
+        "Label": "Title", 
+        "Group": "Description", 
+        "MetadataCloud": "Title", }
+            , 
+        {"recid": 63, 
+        
+        "Label": "Container \/ Volume", 
+        "Group": "Collection Information", 
+        "MetadataCloud": "VolumeEnumeration", }
+            ]
+         }, 
+        grid6 : {
+            name: 'grid6',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Field', text: 'Field', size: '150px', sortable: true, resizable: true },
+                { field: 'JSON', text: 'JSON Key', size: '180px', sortable: true, searchable: 'text', resizable: true },
+                { field: 'Solr', text: 'Solr', size: '380px', resizable: true }
+            ],
+            records: [
+        {"recid": 1, 
+        
+        "Field": "AbstractNote", 
+        "JSON": "abstract", 
+        "Solr": "abstract_teism", }
+            , 
+        {"recid": 2, 
+        
+        "Field": "AccessCondition", }
+            , 
+        {"recid": 3, 
+        
+        "Field": "AccessionAutoNumber", }
+            , 
+        {"recid": 4, 
+        
+        "Field": "AccessionMaterial", }
+            , 
+        {"recid": 5, 
+        
+        "Field": "AccessionNumber", }
+            , 
+        {"recid": 6, 
+        
+        "Field": "AccessRestrictions", }
+            , 
+        {"recid": 7, 
+        
+        "Field": "AlternativeTitle", }
+            , 
+        {"recid": 8, 
+        
+        "Field": "AlternativeTitleDisplay", }
+            , 
+        {"recid": 9, 
+        
+        "Field": "AncestorCreator", }
+            , 
+        {"recid": 10, 
+        
+        "Field": "AncestorDisplayStrings", }
+            , 
+        {"recid": 11, 
+        
+        "Field": "AncestorTitles", }
+            , 
+        {"recid": 12, 
+        
+        "Field": "ArchivalSort", }
+            , 
+        {"recid": 13, 
+        
+        "Field": "ArchiveSpaceUri", }
+            , 
+        {"recid": 14, 
+        
+        "Field": "Box", }
+            , 
+        {"recid": 15, 
+        
+        "Field": "CallNumber", }
+            , 
+        {"recid": 16, 
+        
+        "Field": "CallNumberWithPublicNote", }
+            , 
+        {"recid": 17, 
+        
+        "Field": "Caption", }
+            , 
+        {"recid": 18, 
+        
+        "Field": "Classroomuse", }
+            , 
+        {"recid": 19, 
+        
+        "Field": "ComplexHierarchy", }
+            , 
+        {"recid": 20, 
+        
+        "Field": "ContainerGrouping", }
+            , 
+        {"recid": 21, 
+        
+        "Field": "Contents", }
+            , 
+        {"recid": 22, 
+        
+        "Field": "Contributor", }
+            , 
+        {"recid": 23, 
+        
+        "Field": "ContributorDisplay", }
+            , 
+        {"recid": 24, 
+        
+        "Field": "ContributorUri", }
+            , 
+        {"recid": 25, 
+        
+        "Field": "Coordinate", }
+            , 
+        {"recid": 26, 
+        
+        "Field": "CoordinateDisplay", }
+            , 
+        {"recid": 27, 
+        
+        "Field": "CoordinateEast", }
+            , 
+        {"recid": 28, 
+        
+        "Field": "CoordinateNorth", }
+            , 
+        {"recid": 29, 
+        
+        "Field": "CoordinateSouth", }
+            , 
+        {"recid": 30, 
+        
+        "Field": "CoordinateWest", }
+            , 
+        {"recid": 31, 
+        
+        "Field": "CopyrightDate", }
+            , 
+        {"recid": 32, 
+        
+        "Field": "CreatedBeginDate", }
+            , 
+        {"recid": 33, 
+        
+        "Field": "CreatedEarliestDate", }
+            , 
+        {"recid": 34, 
+        
+        "Field": "CreatedEndDate", }
+            , 
+        {"recid": 35, 
+        
+        "Field": "CreationPlace", }
+            , 
+        {"recid": 36, 
+        
+        "Field": "Creator", }
+            , 
+        {"recid": 37, 
+        
+        "Field": "CreatorDisplay", }
+            , 
+        {"recid": 38, 
+        
+        "Field": "Culture", }
+            , 
+        {"recid": 39, 
+        
+        "Field": "Date", }
+            , 
+        {"recid": 40, 
+        
+        "Field": "DateDepicted", }
+            , 
+        {"recid": 41, 
+        
+        "Field": "Datekey", }
+            , 
+        {"recid": 42, 
+        
+        "Field": "DateStructured", }
+            , 
+        {"recid": 43, 
+        
+        "Field": "Description", }
+            , 
+        {"recid": 44, 
+        
+        "Field": "Digital", }
+            , 
+        {"recid": 45, 
+        
+        "Field": "DigitalCollection", }
+            , 
+        {"recid": 46, 
+        
+        "Field": "Donor", }
+            , 
+        {"recid": 47, 
+        
+        "Field": "EadSnippet", }
+            , 
+        {"recid": 48, 
+        
+        "Field": "Edition", }
+            , 
+        {"recid": 49, 
+        
+        "Field": "Ephemera", }
+            , 
+        {"recid": 50, 
+        
+        "Field": "Events", }
+            , 
+        {"recid": 51, 
+        
+        "Field": "Extent", }
+            , 
+        {"recid": 52, 
+        
+        "Field": "ExtentOfDigitization", }
+            , 
+        {"recid": 53, 
+        
+        "Field": "FindingAid", }
+            , 
+        {"recid": 54, 
+        
+        "Field": "Folder", }
+            , 
+        {"recid": 55, 
+        
+        "Field": "Format", }
+            , 
+        {"recid": 56, 
+        
+        "Field": "FundingSource", }
+            , 
+        {"recid": 57, 
+        
+        "Field": "Genre", }
+            , 
+        {"recid": 58, 
+        
+        "Field": "GeometryType", }
+            , 
+        {"recid": 59, 
+        
+        "Field": "GeoSubject", }
+            , 
+        {"recid": 60, 
+        
+        "Field": "Handle", }
+            , 
+        {"recid": 61, 
+        
+        "Field": "HandleRedirect", }
+            , 
+        {"recid": 62, 
+        
+        "Field": "Identifier", }
+            , 
+        {"recid": 63, 
+        
+        "Field": "IllustrativeMatter", }
+            , 
+        {"recid": 64, 
+        
+        "Field": "IndexedBy", }
+            , 
+        {"recid": 65, 
+        
+        "Field": "IntEndYear", }
+            , 
+        {"recid": 66, 
+        
+        "Field": "IntStartYear", }
+            , 
+        {"recid": 67, 
+        
+        "Field": "Isbn", }
+            , 
+        {"recid": 68, 
+        
+        "Field": "Issn", }
+            , 
+        {"recid": 69, 
+        
+        "Field": "ItemPermission", }
+            , 
+        {"recid": 70, 
+        
+        "Field": "ItemType", }
+            , 
+        {"recid": 71, 
+        
+        "Field": "JobInformation", }
+            , 
+        {"recid": 72, 
+        
+        "Field": "KnownRestrictionsExtra", }
+            , 
+        {"recid": 73, 
+        
+        "Field": "Language", }
+            , 
+        {"recid": 74, 
+        
+        "Field": "LanguageCode", }
+            , 
+        {"recid": 75, 
+        
+        "Field": "LanguageOfCataloging", }
+            , 
+        {"recid": 76, 
+        
+        "Field": "LibraryOfCongressClassificationNumber", }
+            , 
+        {"recid": 77, 
+        
+        "Field": "LocalRecordNumber", }
+            , 
+        {"recid": 78, 
+        
+        "Field": "ManuscriptItems", }
+            , 
+        {"recid": 79, 
+        
+        "Field": "ManuscriptLinearFeet", }
+            , 
+        {"recid": 80, 
+        
+        "Field": "Material", }
+            , 
+        {"recid": 81, 
+        
+        "Field": "NonBookFormat", }
+            , 
+        {"recid": 82, 
+        
+        "Field": "NumberOfPages", }
+            , 
+        {"recid": 83, 
+        
+        "Field": "OrbisBarcode", }
+            , 
+        {"recid": 84, 
+        
+        "Field": "OrbisBibId", }
+            , 
+        {"recid": 85, 
+        
+        "Field": "OriginalRepository", }
+            , 
+        {"recid": 86, 
+        
+        "Field": "OtherDates", }
+            , 
+        {"recid": 87, 
+        
+        "Field": "PartOf", }
+            , 
+        {"recid": 88, 
+        
+        "Field": "PeriodStyle", }
+            , 
+        {"recid": 89, 
+        
+        "Field": "PreferredCitation", }
+            , 
+        {"recid": 90, 
+        
+        "Field": "Projection", }
+            , 
+        {"recid": 91, 
+        
+        "Field": "ProvenanceControlled", }
+            , 
+        {"recid": 92, 
+        
+        "Field": "ProvenanceUncontrolled", }
+            , 
+        {"recid": 93, 
+        
+        "Field": "Publisher", }
+            , 
+        {"recid": 94, 
+        
+        "Field": "Purpose", }
+            , 
+        {"recid": 95, 
+        
+        "Field": "RelatedLink", }
+            , 
+        {"recid": 96, 
+        
+        "Field": "RelatedResourceOnline", }
+            , 
+        {"recid": 97, 
+        
+        "Field": "RelatedTitle", }
+            , 
+        {"recid": 98, 
+        
+        "Field": "RelatedTitleDisplay", }
+            , 
+        {"recid": 99, 
+        
+        "Field": "RelatedUrl", }
+            , 
+        {"recid": 100, 
+        
+        "Field": "RelativePath", }
+            , 
+        {"recid": 101, 
+        
+        "Field": "ReparativeDescription", }
+            , 
+        {"recid": 102, 
+        
+        "Field": "Repository", }
+            , 
+        {"recid": 103, 
+        
+        "Field": "ResourceType", }
+            , 
+        {"recid": 104, 
+        
+        "Field": "ResourceVersionOnline", }
+            , 
+        {"recid": 105, 
+        
+        "Field": "Rights", }
+            , 
+        {"recid": 106, 
+        
+        "Field": "Scale", }
+            , 
+        {"recid": 107, 
+        
+        "Field": "Script", }
+            , 
+        {"recid": 108, 
+        
+        "Field": "SerialTitles", }
+            , 
+        {"recid": 109, 
+        
+        "Field": "SerialVolumes", }
+            , 
+        {"recid": 110, 
+        
+        "Field": "Series", }
+            , 
+        {"recid": 111, 
+        
+        "Field": "SeriesTitle", }
+            , 
+        {"recid": 112, 
+        
+        "Field": "SourceCreated", }
+            , 
+        {"recid": 113, 
+        
+        "Field": "SourceCreator", }
+            , 
+        {"recid": 114, 
+        
+        "Field": "SourceDate", }
+            , 
+        {"recid": 115, 
+        
+        "Field": "SourceEdition", }
+            , 
+        {"recid": 116, 
+        
+        "Field": "SourceNote", }
+            , 
+        {"recid": 117, 
+        
+        "Field": "SourceTitle", }
+            , 
+        {"recid": 118, 
+        
+        "Field": "SubjectEra", }
+            , 
+        {"recid": 119, 
+        
+        "Field": "SubjectGeographic", }
+            , 
+        {"recid": 120, 
+        
+        "Field": "SubjectGeographicCode", }
+            , 
+        {"recid": 121, 
+        
+        "Field": "SubjectHeading", }
+            , 
+        {"recid": 122, 
+        
+        "Field": "SubjectLocal", }
+            , 
+        {"recid": 123, 
+        
+        "Field": "SubjectName", }
+            , 
+        {"recid": 124, 
+        
+        "Field": "SubjectOccupation", }
+            , 
+        {"recid": 125, 
+        
+        "Field": "SubjectTitle", }
+            , 
+        {"recid": 126, 
+        
+        "Field": "SubjectTitleDisplay", }
+            , 
+        {"recid": 127, 
+        
+        "Field": "SubjectTopic", }
+            , 
+        {"recid": 128, 
+        
+        "Field": "Title", }
+            , 
+        {"recid": 129, 
+        
+        "Field": "TitleStatement", }
+            , 
+        {"recid": 130, 
+        
+        "Field": "Tribe", }
+            ]
+         }, 
+        grid7 : {
+            name: 'grid7',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Title', text: 'Title', size: '150px', sortable: true, resizable: true },
+                { field: 'MetadataCloud', text: 'JSON Key', size: '180px', resizable: true }
+            ],
+            records: []
+         }, 
+        grid8 : {
+            name: 'grid8',
+            show: {footer: true, toolbar: true},
+            columns: [
+                { field: 'Type', text: 'Type', size: '150px', sortable: true, resizable: true },
+                { field: '?', text: 'Not sure...', size: '180px', resizable: true }
+            ],
+            records: []
+         }
+        };
+        
+        $(function () {
+        // initialization
+        $('#main').w2layout(config.layout);
+        w2ui.layout.html('left', $().w2sidebar(config.sidebar));
+        w2ui.layout.html('main', $().w2grid(config.grid1));
+        // in memory initialization
+        $().w2grid(config.grid2);
+        $().w2grid(config.grid3);
+        $().w2grid(config.grid4);
+        $().w2grid(config.grid5);
+        $().w2grid(config.grid6);
+        $().w2grid(config.grid7);
+        $().w2grid(config.grid8);
+        });
+    </script></body></html>
