@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -416,7 +416,7 @@
                         "Field": "264| 4|",
                         "Subfield": "c",
                         "MetadataCloud": "CopyrightDate",
-                        "DCS-Group": "", "DCS-Label": "Copright Date"
+                        "DCS-Group": "", "DCS-Label": "Copyright Date"
                     }, {
                         "recid": 42,
                         
@@ -1780,7 +1780,7 @@
                         "FDID": "299",
                         "Label": "Copyright Date",
                         "MetadataCloud": "CopyrightDate",
-                        "DCS-Group": "", "DCS-Label": "Copright Date",
+                        "DCS-Group": "", "DCS-Label": "Copyright Date",
                         "Enabled": "TRUE",
                     }, {
                         "recid": 21,
@@ -2724,7 +2724,7 @@
                     }, {
                         "recid": 17,
                         
-                        "Label": "Copright Date",
+                        "Label": "Copyright Date",
                         "MetadataCloud": "CopyrightDate",
                     }, {
                         "recid": 18,
@@ -3431,11 +3431,52 @@
                         footer: true, toolbar: true
                     },
                     columns:[ {
-                        field: 'Type', text: 'Type', size: '150px', sortable: true, resizable: true
+                        field: 'Field', text: 'Field', size: '150px', sortable: true, searchable: 'text', resizable: true
                     }, {
-                        field: '?', text: 'Not sure...', size: '180px', resizable: true
+                        field: 'Values', text: 'Values', size: '220px', sortable: true, searchable: 'text', resizable: true
+                    }, {
+                        field: 'Note', text: 'Note', size: '220px', resizable: true
                     }],
-                    records:[]
+                    records:[ {
+                        "recid": 1,
+                        
+                        "Field": "title",
+                        "Values": "title_teism",
+                    }, {
+                        "recid": 2,
+                        
+                        "Field": "url",
+                        "Values": "\"https:\/\/collections.library.yale.edu\/catalog\/\" + {OID}",
+                    }, {
+                        "recid": 3,
+                        
+                        "Field": "type",
+                        "Values": "\"website\"",
+                    }, {
+                        "recid": 4,
+                        
+                        "Field": "description",
+                        "Values": "alternativeTitle_tesim + creator_tesim + date_ssim ",
+                        "Note": "If present, and separated with a semi-colon."
+                    }, {
+                        "recid": 5,
+                        
+                        "Field": "image",
+                        "Values": "title_teism",
+                        "Note": "Only if the object is public"
+                    }, {
+                        "recid": 6,
+                        
+                        "Field": "image:type",
+                        "Values": "\"image\/jpeg\"",
+                        "Note": "Only if the object is public"
+                    }, {
+                        "recid": 7,
+                        
+                        "Field": "image:secure_url",
+                        "Values": "thumbnail_path_ss",
+                        "Note": "Only if the object is public"
+                    }]
                 }
             };
             
